@@ -1,0 +1,19 @@
+.item {
+    background: $item-bg;
+    border: 1px solid $item-border-color;
+    margin-bottom: $space;
+    padding: $space;
+}
+
+.item__message {
+    
+    color: $item-text-color;
+}
+
+
+.item__stats {
+    color: $item-text-color;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
