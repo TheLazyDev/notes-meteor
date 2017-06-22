@@ -1,3 +1,3 @@
-# Boilerplate Meteor Project
+# Notes A Meteor Project
 
-This includes a basic react and auth setup.
+This tree contains source code of this project.
