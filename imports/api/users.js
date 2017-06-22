@@ -5,9 +5,7 @@ import {Accounts} from 'meteor/accounts-base';
 
 
 
-
-
- Accounts.validateNewUser((user)=>{
+export const validateNewUser = (user)=>{
 
    const email = user.emails[0].address;
    
@@ -21,4 +19,8 @@ import {Accounts} from 'meteor/accounts-base';
  
      return true;  
         
- })
+ }
+
+if(Meteor.isServer){
+    Accounts.validateNewUser(validateNewUser);
+}
