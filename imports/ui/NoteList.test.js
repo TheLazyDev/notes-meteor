@@ -5,24 +5,7 @@ import {mount} from 'enzyme';
 
 import {NoteList} from './NoteList';
 
-const notes = [
-    {
-        _id: 'noteId1',
-        title: 'testTitle',
-        body: 'Something',
-        updatedAt:0,
-        userId: 'userId1'
-    }, {
-
-        _id: 'noteId2',
-        title: 'testTitleeee',
-        body: 'Somethingfffff',
-        updatedAt:123333333333,
-        userId: 'userId2'
-
-    }
-
-]
+import {notes} from '../fixtures/fixtures';
 
 
 
