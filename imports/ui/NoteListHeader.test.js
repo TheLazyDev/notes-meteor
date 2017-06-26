@@ -6,32 +6,49 @@ import {mount} from 'enzyme';
 
 import {NoteListHeader} from './NoteListHeader';
 
+import {notes} from '../fixtures/fixtures';
+
 
 if(Meteor.isClient){
 
 
     describe('NoteListHeader', function(){
 
+        let meteorCall;
+        let Session;
 
-        it('should call meteorCall on click', function(){
-
-            const spy = expect.createSpy();
-        
-            const wrapper = mount(<NoteListHeader meteorCall={spy} />);
-
-            wrapper.find('button').simulate('click');
-
-            expect(spy).toHaveBeenCalledWith('notes.insert');
+        beforeEach(function(){
+            meteorCall = expect.createSpy();
+            Session = {
+                set: expect.createSpy()
+            }
         })
 
-        // it('should set default title if no title set', function(){
-        //     const title = '';
-        //     const updatedAt = 1498033353126;
 
-        //     const wrapper = mount(<NoteListItem note={{title,updatedAt}} />);
+        it('should call meteorCall on click', function(){
+        
+            const wrapper = mount(<NoteListHeader meteorCall={meteorCall} Session={Session} />);
 
-        //     expect(wrapper.find('h5').text()).toBe('Untitled note');
-        // })
+            wrapper.find('button').simulate('click');
+            meteorCall.calls[0].arguments[1](undefined,notes[0]._id);
+
+            expect(meteorCall.calls[0].arguments[0]).toBe('notes.insert');
+            expect(Session.set).toHaveBeenCalledWith('selectedNoteId', notes[0]._id)
+        })
+
+
+        it('should not session for a failed insert', function(){
+        
+            const wrapper = mount(<NoteListHeader meteorCall={meteorCall} Session={Session} />);
+
+            wrapper.find('button').simulate('click');
+            meteorCall.calls[0].arguments[1]({},undefined);
+
+            expect(meteorCall.calls[0].arguments[0]).toBe('notes.insert');
+            expect(Session.set).toNotHaveBeenCalled();
+        })
+
+        
     })
 
 }
