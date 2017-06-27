@@ -6,28 +6,68 @@
     overflow-y: scroll;
 }
 
+.item-list__header {
+    display: flex;
+    flex-direction: column;
+    padding: $space;
+}
 
 
 // Item
 
-
-
 .item {
-    background: $item-bg;
-    border: 1px solid $item-border-color;
-    margin-bottom: $space;
+    cursor: pointer;
     padding: $space;
-}
-
-.item__message {
-    
-    color: $item-text-color;
+    border-left: $item-border-width solid transparent;
+    transition: background-color .3s ease , border-left .3s ease;
 }
 
 
-.item__stats {
-    color: $item-text-color;
-    font-style: italic;
-    text-align: center;
+.item__title {
+   font-weight: normal;
+   font-size: $base-font-size;
+   margin-bottom: .4rem;
+}
+
+
+.item--selected .item__title {
+    font-weight: bold;
+}
+
+
+
+.item__subtitle {
+
+    color: $dark-grey;
     margin: 0;
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.item--selected, .item--selected:hover {
+    background-color: $light-grey;
+    border-left: $item-border-width solid $brand-primary;
+
+}
+
+.item:hover {
+    background-color: $light-grey;
+    border-left: $item-border-width solid $grey;
+}
+// Empty Item 
+
+.empty-item {
+    font-style: italic;
+    padding: $space;
+    text-align: center;
 }
