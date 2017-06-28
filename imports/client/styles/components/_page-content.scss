@@ -4,6 +4,7 @@
     height: $page-content-height;
     margin: 0 auto;
     max-width: $site-max-width;
+   
     
     @include desktop {
         padding: $large-space $space;
@@ -11,13 +12,28 @@
 }
 
 .page-content__sidebar {
-        display: none;
-        width: $page-content-sidebar-width;
-        padding-right: $large-space;
+        display: flex;
+        position: fixed;
+        top: $header-height;
+        left: -100vw;
+        bottom: 0;
+        width: 100vw;
+
+        transition: left .3s ease;
 
         @include desktop {
+            position: static;
             display: flex;
+            width: $page-content-sidebar-width;
+            padding-right: $large-space;
         }
+}
+
+
+.is-nav-open .page-content__sidebar {
+    display: block;
+    left: 0;
+
 }
 
 
