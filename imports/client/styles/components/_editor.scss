@@ -16,7 +16,6 @@
     margin-bottom: $large-space;
     outline: none;
     padding: $input-spacing;
-
 }
 
 .editor__body {
@@ -26,6 +25,7 @@
     outline: none;
     padding: $input-spacing;
     resize: none;
+     --webkit-overflow-scrolling: touch;
 
 }
 
